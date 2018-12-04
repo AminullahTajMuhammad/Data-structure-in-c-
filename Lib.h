@@ -69,6 +69,7 @@ class SinglyLinkList {
 		SinglyLinkListNode* first;
 	public:
 		SinglyLinkList() : first(NULL) { }
+		
 		void addNode(int value) {
 			SinglyLinkListNode* temp = new SinglyLinkListNode;
 			temp->data = value;
@@ -76,8 +77,20 @@ class SinglyLinkList {
 			first = temp;
 		}
 		
-		void addNodeFromPosition(int value, int position) {
-			
+		void addNodeFromPosition(SinglyLinkListNode* node, int value, int position) {
+			SinglyLinkListNode* temp = first;
+			if(position < 0) {
+				cout<<"Invalid Position: "<<endl;
+			} else {
+				for(int i=position; i>=0; i--) {
+					temp = temp->next;
+					
+					if(i==0) {
+						node->next = temp->next;
+						temp->next = node;
+					}
+				}
+			}
 		}
 		
 		void addNodeFromEnd(int value) {
