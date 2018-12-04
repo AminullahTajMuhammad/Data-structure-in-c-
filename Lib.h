@@ -69,17 +69,33 @@ class SinglyLinkList {
 		SinglyLinkListNode* first;
 	public:
 		SinglyLinkList() : first(NULL) { }
-		void addItem(int value) {
+		void addNode(int value) {
 			SinglyLinkListNode* temp = new SinglyLinkListNode;
 			temp->data = value;
 			temp->next = first;
 			first = temp;
 		}
 		
+		void addNodeFromPosition(int value, int position) {
+			
+		}
+		
+		void addNodeFromEnd(int value) {
+			
+		}
+		
 		// Delete Node from begining
 		void deleteNodeFromBegining() {
 			SinglyLinkListNode* dltNode = first;
 			first = first->next;
+		}
+		
+		void deleteNodeFromPosition(int position) {
+			
+		}
+		
+		void deleteNodeFromEnd() {
+			
 		}
 		
 		void display() {
@@ -91,3 +107,16 @@ class SinglyLinkList {
 		}
 };
 //- - - - - - - - - - - - - - - - - - - - - - - - - //
+
+// - - - - - - - Added Doubly LinkedList Node - - - - - - - - - //
+struct DoublyLinkedListNode {
+	DoublyLinkedListNode* previous;
+	int data;
+	DoublyLinkedListNode* next;
+};
+
+//------------- Doubly LinkedLIst Class------------------------//
+class DoublyLinkLised {
+	
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
