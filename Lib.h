@@ -52,3 +52,42 @@ class Sorting {
 			}
 		}
 };
+
+
+//--------------------Link List Class in data structures--------------------------//
+
+
+// ---------- Node of link list------------------------//
+struct SinglyLinkListNode {
+	int data;
+	SinglyLinkListNode* next;
+};
+
+//- - - - - - - - Linklist class - - - - - - - - - //
+class SinglyLinkList {
+	private:
+		SinglyLinkListNode* first;
+	public:
+		SinglyLinkList() : first(NULL) { }
+		void addItem(int value) {
+			SinglyLinkListNode* temp = new SinglyLinkListNode;
+			temp->data = value;
+			temp->next = first;
+			first = temp;
+		}
+		
+		// Delete Node from begining
+		void deleteNodeFromBegining() {
+			SinglyLinkListNode* dltNode = first;
+			first = first->next;
+		}
+		
+		void display() {
+			SinglyLinkListNode* currentNode = first;
+			while(currentNode != NULL) {
+				cout<<currentNode->data<<" ";
+				currentNode = currentNode->next;
+			}
+		}
+};
+//- - - - - - - - - - - - - - - - - - - - - - - - - //
