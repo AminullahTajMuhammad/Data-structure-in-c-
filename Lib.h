@@ -67,10 +67,12 @@ struct SinglyLinkListNode {
 class SinglyLinkList {
 	private:
 		SinglyLinkListNode* first;
+		int addNodeInteger;
 	public:
-		SinglyLinkList() : first(NULL) { }
+		SinglyLinkList() : addNodeInteger(0), first(NULL) { }
 		
 		void addNode(int value) {
+			addNodeInteger++;
 			SinglyLinkListNode* temp = new SinglyLinkListNode;
 			temp->data = value;
 			temp->next = first;
@@ -94,7 +96,20 @@ class SinglyLinkList {
 		}
 		
 		void addNodeFromEnd(int value) {
+			SinglyLinkListNode* tempNode = first;
 			
+			for(int i=0; i<addNodeInteger; i++) {
+					
+				if(tempNode->next != NULL) {
+					tempNode = tempNode->next;
+				} else {
+					SinglyLinkListNode* newNode = new SinglyLinkListNode;
+					tempNode->next = newNode;
+					newNode->data = value;
+					break;
+				}
+			
+			}
 		}
 		
 		// Delete Node from begining
@@ -108,7 +123,19 @@ class SinglyLinkList {
 		}
 		
 		void deleteNodeFromEnd() {
-			
+			if(position < 0) {
+				cout<<"Invalid Position: ";
+			} else {
+				for(int i=position; i>=0; i--) {
+					tempNode = tempNode->next;
+					if(i == 0) {
+						Node* newNode = new Node();
+						newNode = tempNode->next->next;
+						tempNode->next = newNode;
+						break;
+					}
+				}
+			}	
 		}
 		
 		void display() {
