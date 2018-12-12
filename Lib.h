@@ -1,6 +1,7 @@
 // a library integrated data structure and algorithms
 
 #include<iostream>
+#include<cstdlib>
 using namespace std;
 class Search {
 	public:
@@ -119,23 +120,61 @@ class SinglyLinkList {
 		}
 		
 		void deleteNodeFromPosition(int position) {
+			SinglyLinkListNode* node = new SinglyLinkListNode;
+			SinglyLinkListNode* temp = new SinglyLinkListNode;
 			
+			int curr = 0;
+			// dummyHead is useful if we have to remove the head,
+			// with the help of dummyHead, checking separately for the head case is not required.
+			node->next = first;
+			temp = node;
+		
+			while( temp->next != NULL && curr < position ){
+				temp = temp->next;
+				curr++;
+			}
+		
+			if(curr == position){
+				temp->next = temp->next->next;
+				first = node->next;
+			}
+		
+			else{
+		        cout<<"your linked list is greater than my linked list.";
+			}
 		}
 		
+		
 		void deleteNodeFromEnd() {
-			if(position < 0) {
-				cout<<"Invalid Position: ";
-			} else {
-				for(int i=position; i>=0; i--) {
+			SinglyLinkListNode* tempNode = first;
+			//SinglyLinkListNode* newNode = new SinglyLinkListNode;
+			if(tempNode->next != NULL) {
+				for(int i=0; i<=LengthofLinkList(); i++) {
 					tempNode = tempNode->next;
-					if(i == 0) {
-						Node* newNode = new Node();
-						newNode = tempNode->next->next;
-						tempNode->next = newNode;
+				
+					if(i == LengthofLinkList()) {
+						tempNode = NULL;
 						break;
 					}
 				}
-			}	
+			}
+//			} else {
+//				
+//				newNode->next = first;
+//				tempNode = newNode;
+//			}
+			
+			 
+//			 else {
+//				for(int i=position; i>=0; i--) {
+//					if(i == 0) {
+//						Node* newNode = new Node();
+//						newNode = tempNode->next->next;
+//						tempNode->next = newNode;
+//						break;
+//					}
+//				}
+//			}	
 		}
 		
 		void display() {
@@ -144,6 +183,17 @@ class SinglyLinkList {
 				cout<<currentNode->data<<" ";
 				currentNode = currentNode->next;
 			}
+		}
+		
+		int LengthofLinkList() {
+			SinglyLinkListNode* node = first;
+			int count=0;
+			while(node != NULL) {
+				node = node->next;
+				count++;
+			}
+			
+			return count;
 		}
 };
 //- - - - - - - - - - - - - - - - - - - - - - - - - //
