@@ -14,6 +14,18 @@ int main() {
 	
 	list.deleteNodeFromEnd();
 	list.display();
+	cout<<endl;
+	
+	DoublyLinkListed dList;
+	dList.addNode(100);
+	dList.addNode(200);
+	dList.addNode(100);
+	dList.addNode(200);
+	dList.addNode(100);
+	dList.addNode(200);
+	dList.addNode(100);
+	dList.addNode(200);
+	dList.display();
 
 
 	return 0;

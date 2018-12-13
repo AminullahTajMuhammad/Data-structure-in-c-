@@ -158,7 +158,7 @@ public:
 		}
 		
 		// free the memory deleted node from list
-		free(tempNode);
+		//free(tempNode);
 	}
 
 	void display() {
@@ -176,21 +176,53 @@ public:
 			node = node->next;
 			count++;
 		}
-
 		return count;
 	}
 };
 //- - - - - - - - - - - - - - - - - - - - - - - - - //
 
 // - - - - - - - Added Doubly LinkedList Node - - - - - - - - - //
-struct DoublyLinkedListNode {
-	DoublyLinkedListNode* previous;
+struct DoublyLinkListNode {
+	DoublyLinkListNode* previous;
 	int data;
-	DoublyLinkedListNode* next;
+	DoublyLinkListNode* next;
 };
 
 //------------- Doubly LinkedLIst Class------------------------//
-class DoublyLinkLised {
+class DoublyLinkListed {
+	private:
+		DoublyLinkListNode *first, *tail; 
+	public:
+		DoublyLinkListed() {
+			first = NULL;
+			tail = NULL;
+		}
+		
+		int LengthofLinkList() {
+			DoublyLinkListNode* node = first;
+			int count = 0;
+			while (node != NULL) {
+				node = node->next;
+				count++;
+			}
+			return count;
+		}
+		
+		void addNode(int value) {
+			DoublyLinkListNode *temp = new DoublyLinkListNode;
+			temp->data = value;
+			temp->next = first;
+			temp->previous = NULL;
+			first = temp;
+		}
+		
+		void display() {
+			DoublyLinkListNode* currentNode = first;
+			while (currentNode != NULL) {
+				cout << currentNode->data << " ";
+				currentNode = currentNode->next;
+			}
+		}
 
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
