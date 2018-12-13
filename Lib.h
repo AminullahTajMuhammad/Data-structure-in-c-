@@ -152,47 +152,13 @@ public:
 
 
 	void deleteNodeFromEnd() {
-		int current = 0; 
-		SinglyLinkListNode* tempNode = new SinglyLinkListNode;
-		tempNode = first;
-		//SinglyLinkListNode* newNode = new SinglyLinkListNode;
-		
-		while(tempNode->next != NULL && current < LengthofLinkList()) {
+		SinglyLinkListNode *tempNode = first;
+		while(tempNode->next != NULL) {
 			tempNode = tempNode->next;
-			if(current == LengthofLinkList()) {
-				tempNode = NULL;
-					first = tempNode;
-			}
-			
 		}
-
-//		for (int i = 0; i < LengthofLinkList(); i++) {
-//			if (tempNode->next != NULL) {
-//				
-//
-//				if (i == LengthofLinkList()) {
-//					
-//				}
-//
-//			}
-//			else {
-//				cout << "List is Empty: " << endl;
-//			}
-//			
-//
-//		}
-
-
-		//			 else {
-		//				for(int i=position; i>=0; i--) {
-		//					if(i == 0) {
-		//						Node* newNode = new Node();
-		//						newNode = tempNode->next->next;
-		//						tempNode->next = newNode;
-		//						break;
-		//					}
-		//				}
-		//			}	
+		
+		// free the memory deleted node from list
+		free(tempNode);
 	}
 
 	void display() {

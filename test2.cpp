@@ -1,13 +1,7 @@
 #include<iostream>
 #include "Lib.h"
 using namespace std;
-using namespace std;
-struct LinkListNode {
-	int data;
-	LinkListNode* next;
-};
 int main() {
-	LinkListNode* newNode = new LinkListNode;
 	SinglyLinkList list;
 	list.addNode(10);
 	list.addNode(20);
@@ -20,5 +14,7 @@ int main() {
 	
 	list.deleteNodeFromEnd();
 	list.display();
+
+
 	return 0;
 }
