@@ -26,6 +26,10 @@ int main() {
 	dList.addNode(100);
 	dList.addNode(200);
 	dList.display();
+	
+	DoublyLinkedListNode *data = new DoublyLinkedListNode;
+	dList.addNodeFromPosition(data,1000, 5);
+	dList.display();
 
 
 	return 0;

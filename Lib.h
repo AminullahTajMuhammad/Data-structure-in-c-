@@ -182,16 +182,16 @@ public:
 //- - - - - - - - - - - - - - - - - - - - - - - - - //
 
 // - - - - - - - Added Doubly LinkedList Node - - - - - - - - - //
-struct DoublyLinkListNode {
-	DoublyLinkListNode* previous;
+struct DoublyLinkedListNode {
+	DoublyLinkedListNode* previous;
 	int data;
-	DoublyLinkListNode* next;
+	DoublyLinkedListNode* next;
 };
 
 //------------- Doubly LinkedLIst Class------------------------//
 class DoublyLinkListed {
 	private:
-		DoublyLinkListNode *first, *tail; 
+		DoublyLinkedListNode *first, *tail; 
 	public:
 		DoublyLinkListed() {
 			first = NULL;
@@ -199,7 +199,7 @@ class DoublyLinkListed {
 		}
 		
 		int LengthofLinkList() {
-			DoublyLinkListNode* node = first;
+			DoublyLinkedListNode* node = first;
 			int count = 0;
 			while (node != NULL) {
 				node = node->next;
@@ -208,8 +208,25 @@ class DoublyLinkListed {
 			return count;
 		}
 		
+		void addNodeFromPosition(DoublyLinkedListNode *node, int value, int position) {
+			DoublyLinkedListNode *temp = first;
+			if (position < 0) {
+				cout << "Invalid Position: " << endl;
+			} else {
+				for (int i = 0; i < position; i++) {
+					temp = temp->previous;
+		
+					if (i == 0) {
+						node->next = temp->previous;
+						temp->data = value;
+						temp->next = node;
+					}
+				}
+			}
+		}	
+		
 		void addNode(int value) {
-			DoublyLinkListNode *temp = new DoublyLinkListNode;
+			DoublyLinkedListNode *temp = new DoublyLinkedListNode;
 			temp->data = value;
 			temp->next = first;
 			temp->previous = NULL;
@@ -217,7 +234,7 @@ class DoublyLinkListed {
 		}
 		
 		void display() {
-			DoublyLinkListNode* currentNode = first;
+			DoublyLinkedListNode* currentNode = first;
 			while (currentNode != NULL) {
 				cout << currentNode->data << " ";
 				currentNode = currentNode->next;
