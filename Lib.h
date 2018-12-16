@@ -294,3 +294,60 @@ public:
 	}
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+// - - - - - - - - - - Added Queue Class With arrays and linkedList - - - - - -- - - - -//
+
+struct QueueNode {
+	int data;
+	QueueNode *next;
+};
+class QueueUsingLinkListed {
+	private:
+		QueueNode *head;
+	public:
+		QueueUsingLinkListed() : head(NULL) {}
+		void add(int value) {
+			QueueNode* temp = new QueueNode;
+			temp->data = value;
+			temp->next = head;
+			head = temp;
+		}
+		QueueNode* remove() {
+			QueueNode* dltNode = head;
+			head = head->next;
+			return head;
+		}
+		void display() {
+			QueueNode *current = head;
+			while(current->next != NULL) {
+				cout<<current->data<<" ";
+				current = current->next;
+			}
+		}
+};
+
+class QueueUsingArray {
+private:
+	int array[Max_Size], top;
+public:
+	QueueUsingArray() : top(-1) {};
+	void add(int insert) {
+		if(top > Max_Size) { cout<<"Queue OverFlow"<<endl; } 
+		else {
+			array[++top] = insert;
+			cout<<insert<<" ";
+		}
+	}
+	int remove() {
+		int dlt;
+		if(top < 0) { cout<<"Queue Is under flow"; } 
+		else { 
+			for(int i=top; i>=0; i--) {
+				if(i == 0) {	dlt = array[i];		}
+			} 
+		}
+		return dlt;
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
