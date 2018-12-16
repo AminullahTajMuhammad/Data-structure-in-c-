@@ -243,3 +243,54 @@ class DoublyLinkListed {
 
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+// - - - - - - - - Stack Classes Both Using array and using lis - - - - - - - - //
+struct StackNode {
+	int data;
+	StackNode *next;
+};
+class StackUsingLinkList {
+	private:
+		Node *head;
+	public:
+		StackUsingLinkList() : head(NULL) {}
+		void push(int value) {
+			Node* temp = new Node;
+			temp->data = value;
+			temp->next = head;
+			head = temp;
+		}
+		Node* pop() {
+			Node* dltNode = head;
+			head = head->next;
+			return head;
+		}
+		void display() {
+			Node *current = head;
+			while(current->next != NULL) {
+				cout<<current->data<<" ";
+				current = current->next;
+			}
+		}
+};
+
+class StackUsingArray {
+private:
+	int array[Max_Size], top;
+public:
+	StackUsingArray() : top(-1) {};
+	void push(int insert) {
+		if(top > Max_Size) { cout<<"Stack OverFlow"<<endl; } 
+		else {
+			array[++top] = insert;
+			cout<<"Insert into Stack: "<<insert<<endl;
+		}
+	}
+	int pop() {
+		int remove;
+		if(top < 0) { cout<<"Stack Is under flow"; } 
+		else { remove = array[top--]; }
+		return remove;
+	}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
