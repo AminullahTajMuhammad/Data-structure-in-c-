@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include<cstdlib>
+#define Max_Size 10000
 using namespace std;
 class Search {
 public:
@@ -189,13 +190,52 @@ struct DoublyLinkedListNode {
 };
 
 //------------- Doubly LinkedLIst Class------------------------//
-class DoublyLinkListed {
+class DoublyLinkList {
 	private:
-		DoublyLinkedListNode *first, *tail; 
+		DoublyLinkedListNode *first, *tail;
+		
+		DoublyLinkedListNode* getNode(int value) {
+			DoublyLinkedListNode *newNode = new DoublyLinkedListNode;
+			newNode->data = value;
+			newNode->previous = NULL;
+			newNode->next = NULL;
+			return newNode;
+		} 
 	public:
-		DoublyLinkListed() {
+		DoublyLinkList() {
 			first = NULL;
 			tail = NULL;
+		}
+		
+		void addNode(int value) {
+			DoublyLinkedListNode *temp = getNode(value);
+			if(first == NULL) {
+				first = temp;
+				return;
+			}
+			first->previous = temp;
+			temp->next = first;
+			first = temp;
+		}
+		
+		void addNodeFromPosition(int value, int position) {
+			DoublyLinkedListNode *temp = first;
+		}	
+		
+		void addNodeFromEnd(int value) {
+			
+		}
+		
+		void deleteNodeFromBegining() {
+			
+		}
+		
+		void deleteNodeFromPosition(int position) {
+			
+		}
+		
+		void deleteNodeFromEnd() {
+			
 		}
 		
 		int LengthofLinkList() {
@@ -208,37 +248,15 @@ class DoublyLinkListed {
 			return count;
 		}
 		
-		void addNodeFromPosition(DoublyLinkedListNode *node, int value, int position) {
-			DoublyLinkedListNode *temp = first;
-			if (position < 0) {
-				cout << "Invalid Position: " << endl;
-			} else {
-				for (int i = 0; i < position; i++) {
-					temp = temp->previous;
-		
-					if (i == 0) {
-						node->next = temp->previous;
-						temp->data = value;
-						temp->next = node;
-					}
-				}
-			}
-		}	
-		
-		void addNode(int value) {
-			DoublyLinkedListNode *temp = new DoublyLinkedListNode;
-			temp->data = value;
-			temp->next = first;
-			temp->previous = NULL;
-			first = temp;
-		}
-		
 		void display() {
 			DoublyLinkedListNode* currentNode = first;
 			while (currentNode != NULL) {
 				cout << currentNode->data << " ";
 				currentNode = currentNode->next;
 			}
+		}
+		void reverseDisplay() {
+			
 		}
 
 };
@@ -251,22 +269,22 @@ struct StackNode {
 };
 class StackUsingLinkList {
 	private:
-		Node *head;
+		StackNode *head;
 	public:
 		StackUsingLinkList() : head(NULL) {}
 		void push(int value) {
-			Node* temp = new Node;
+			StackNode* temp = new StackNode;
 			temp->data = value;
 			temp->next = head;
 			head = temp;
 		}
-		Node* pop() {
-			Node* dltNode = head;
+		StackNode* pop() {
+			StackNode* dltNode = head;
 			head = head->next;
 			return head;
 		}
 		void display() {
-			Node *current = head;
+			StackNode *current = head;
 			while(current->next != NULL) {
 				cout<<current->data<<" ";
 				current = current->next;
@@ -327,27 +345,27 @@ class QueueUsingLinkListed {
 };
 
 class QueueUsingArray {
-private:
-	int array[Max_Size], top;
-public:
-	QueueUsingArray() : top(-1) {};
-	void add(int insert) {
-		if(top > Max_Size) { cout<<"Queue OverFlow"<<endl; } 
-		else {
-			array[++top] = insert;
-			cout<<insert<<" ";
+	private:
+		int array[Max_Size], top;
+	public:
+		QueueUsingArray() : top(-1) {};
+		void add(int insert) {
+			if(top > Max_Size) { cout<<"Queue OverFlow"<<endl; } 
+			else {
+				array[++top] = insert;
+				cout<<insert<<" ";
+			}
 		}
-	}
-	int remove() {
-		int dlt;
-		if(top < 0) { cout<<"Queue Is under flow"; } 
-		else { 
-			for(int i=top; i>=0; i--) {
-				if(i == 0) {	dlt = array[i];		}
-			} 
+		int remove() {
+			int dlt;
+			if(top < 0) { cout<<"Queue Is under flow"; } 
+			else { 
+				for(int i=top; i>=0; i--) {
+					if(i == 0) {	dlt = array[i];		}
+				} 
+			}
+			return dlt;
 		}
-		return dlt;
-	}
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 

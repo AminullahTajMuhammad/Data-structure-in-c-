@@ -16,19 +16,15 @@ int main() {
 	list.display();
 	cout<<endl;
 	
-	DoublyLinkListed dList;
+	DoublyLinkList dList;
 	dList.addNode(100);
 	dList.addNode(200);
-	dList.addNode(100);
-	dList.addNode(200);
-	dList.addNode(100);
-	dList.addNode(200);
-	dList.addNode(100);
-	dList.addNode(200);
-	dList.display();
-	
-	DoublyLinkedListNode *data = new DoublyLinkedListNode;
-	dList.addNodeFromPosition(data,1000, 5);
+	dList.addNode(300);
+	dList.addNode(400);
+	dList.addNode(500);
+	dList.addNode(600);
+	dList.addNode(700);
+	dList.addNode(800);
 	dList.display();
 
 
