@@ -219,8 +219,14 @@ class DoublyLinkList {
 		}
 		
 		void addNodeFromPosition(int value, int position) {
+			int current = 0;
 			DoublyLinkedListNode *temp = first;
-		}	
+			while(temp->next != NULL && current < position) {
+				temp = temp->next;
+				temp->previous = first;
+				current++; 
+			}
+		}
 		
 		void addNodeFromEnd(int value) {
 			
@@ -298,7 +304,9 @@ private:
 public:
 	StackUsingArray() : top(-1) {};
 	void push(int insert) {
-		if(top > Max_Size) { cout<<"Stack OverFlow"<<endl; } 
+		if(top > Max_Size) { 
+			cout<<"Stack OverFlow"<<endl; 
+		} 
 		else {
 			array[++top] = insert;
 			cout<<"Insert into Stack: "<<insert<<endl;
@@ -306,14 +314,18 @@ public:
 	}
 	int pop() {
 		int remove;
-		if(top < 0) { cout<<"Stack Is under flow"; } 
-		else { remove = array[top--]; }
+		if(top < 0) { 
+			cout<<"Stack Is under flow"; 
+		} 
+		else {
+			remove = array[top--]; 
+		}
 		return remove;
 	}
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
-// - - - - - - - - - - Added Queue Class With arrays and linkedList - - - - - -- - - - -//
+// - - - - - - - - - - Added Queue Class With arrays and linkedList - - - - - - - - - - -//
 
 struct QueueNode {
 	int data;
@@ -368,4 +380,33 @@ class QueueUsingArray {
 		}
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+// - - - - - - - - - - - - - - - Tree Class Starts From Here - - - - - - - - - - - - - - - - - - //
+struct TreeNode {
+	int data;
+	TreeNode *leftNode, *rigthNode;
+};
 
+class TreeClass {
+	private:
+		TreeNode *root;
+	public:
+		TreeClass() : root(NULL) {}
+		
+		TreeNode* creatNode(int data) {
+			TreeNode *tempNode = new TreeNode();
+			
+			tempNode->data = data;
+			tempNode->leftNode = NULL;
+			tempNode->rigthNode = NULL;
+			tempNode = root;
+			return root;
+		
+		}
+		void insertNodeInTree() {
+			
+		}
+		void deleteNodeFromTree() {
+			
+		}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
