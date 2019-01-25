@@ -394,15 +394,29 @@ class TreeClass {
 		
 		TreeNode* creatNode(int data) {
 			TreeNode *tempNode = new TreeNode();
-			
 			tempNode->data = data;
 			tempNode->leftNode = NULL;
 			tempNode->rigthNode = NULL;
-			tempNode = root;
+			root = tempNode;
 			return root;
-		
 		}
-		void insertNodeInTree() {
+		void insertNodeInTree(TreeNode *node, int left_side, int right_value) {
+			// For left side
+			if(node->leftNode == NULL) {
+				node->leftNode = creatNode(left_side);
+			} else {
+				TreeNode *l_temp = creatNode(left_side);
+				l_temp->leftNode = node->leftNode;
+				node->leftNode = l_temp; 
+			}
+			// For right side
+			if(node->rigthNode == NULL) {
+				node->rigthNode = creatNode(right_value);
+			} else {
+				TreeNode *r_temp = creatNode(right_value);
+				r_temp->rigthNode = node->rigthNode;
+				node->rigthNode = r_temp;
+			}
 			
 		}
 		void deleteNodeFromTree() {
