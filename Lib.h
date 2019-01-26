@@ -1,4 +1,12 @@
 // a library integrated data structure and algorithms
+// Developed by: Aminullah Taj Muhammad
+// https://github.com/AminullahTajMuhammad/Data-structure-in-c-
+
+// ToDo For Data Structure Library
+// 1) Template working
+// 2) Update All Functions using templates
+// 3) Complete Doubly Link List
+// 4) Update All Function and Algorithms in pointers.
 
 #include<iostream>
 #include<cstdlib>
@@ -390,6 +398,14 @@ class TreeClass {
 	private:
 		TreeNode *root;
 	public:
+		
+		/**
+		* TODO
+		* 1) Update Insert Function
+		* 2) Added Search Function
+		* 3) Remove Node Function 
+		*/
+		
 		TreeClass() : root(NULL) {}
 		
 		TreeNode* creatNode(int data) {
@@ -400,6 +416,8 @@ class TreeClass {
 			root = tempNode;
 			return root;
 		}
+		
+		// update this function
 		void insertNodeInTree(TreeNode *node, int left_side_value, int right_value_value) {
 			// For left side
 			if(node->leftNode == NULL) {
@@ -427,6 +445,7 @@ class TreeClass {
 			treeTreverse_inOrder(node->rigthNode);
 		}
 		
+		//pre order treverse
 		void treeTreverse_preOrder(TreeNode *node) {
 			if(node == NULL) { return; }
 			cout<<node->data;
@@ -434,14 +453,13 @@ class TreeClass {
 			treeTreverse_inOrder(node->rigthNode);
 		}
 		
+		// post order treverse
 		void treeTreverse_postOrder(TreeNode *node) {
 			if(node == NULL) { return; }
 			treeTreverse_postOrder(node->leftNode);
 			treeTreverse_postOrder(node->rigthNode);
 			cout<<node->data;
 		}
-		void deleteNodeFromTree() {
-			
-		}
+		
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
