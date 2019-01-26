@@ -400,24 +400,45 @@ class TreeClass {
 			root = tempNode;
 			return root;
 		}
-		void insertNodeInTree(TreeNode *node, int left_side, int right_value) {
+		void insertNodeInTree(TreeNode *node, int left_side_value, int right_value_value) {
 			// For left side
 			if(node->leftNode == NULL) {
-				node->leftNode = creatNode(left_side);
+				node->leftNode = creatNode(left_side_value);
 			} else {
-				TreeNode *l_temp = creatNode(left_side);
+				TreeNode *l_temp = creatNode(left_side_value);
 				l_temp->leftNode = node->leftNode;
 				node->leftNode = l_temp; 
 			}
 			// For right side
 			if(node->rigthNode == NULL) {
-				node->rigthNode = creatNode(right_value);
+				node->rigthNode = creatNode(right_value_value);
 			} else {
-				TreeNode *r_temp = creatNode(right_value);
+				TreeNode *r_temp = creatNode(right_value_value);
 				r_temp->rigthNode = node->rigthNode;
 				node->rigthNode = r_temp;
 			}
 			
+		}
+		// In order Tree treversal 
+		void treeTreverse_inOrder(TreeNode *node) {
+			if(node == NULL) { return; }
+			treeTreverse_inOrder(node->leftNode);
+			cout<<node->data;
+			treeTreverse_inOrder(node->rigthNode);
+		}
+		
+		void treeTreverse_preOrder(TreeNode *node) {
+			if(node == NULL) { return; }
+			cout<<node->data;
+			treeTreverse_inOrder(node->leftNode);
+			treeTreverse_inOrder(node->rigthNode);
+		}
+		
+		void treeTreverse_postOrder(TreeNode *node) {
+			if(node == NULL) { return; }
+			treeTreverse_postOrder(node->leftNode);
+			treeTreverse_postOrder(node->rigthNode);
+			cout<<node->data;
 		}
 		void deleteNodeFromTree() {
 			
