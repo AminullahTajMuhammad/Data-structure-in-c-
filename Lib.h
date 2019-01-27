@@ -461,5 +461,50 @@ class TreeClass {
 			cout<<node->data;
 		}
 		
+		T_Node* insert(T_Node *node, int value) {
+			if(node == NULL) {
+				return creatNode(value);
+			}
+			if(node->data < value) {
+				node->leftNode = insert(node->leftNode, value);
+			}
+			if(node->data > value) {
+				node->rigthNode = insert(node->rigthNode, value);
+			}
+			
+			return node;
+		}
+		bool search(T_Node *node, int value) {
+			if(node == NULL) {
+				return false;
+			}
+			if(value == node->data) {
+				return true;
+			}
+			else if(value <= node->data) {	
+				return search(node->leftNode, value);
+			} 
+			else if(value >= node->data) {
+				return search(node->rigthNode, value);
+			}
+		}
+	
+		bool iterativeSearch(int value, T_Node *node) {
+			while(node != NULL) {
+				if(node == NULL) {
+					return false;
+				}
+				if(value < node->data) {
+					node = node->leftNode;
+				} else if(value > node->data) {
+					node = node->rigthNode;
+				} else {
+					return true;
+				}
+			}
+			
+			return false;
+		}
+		
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
